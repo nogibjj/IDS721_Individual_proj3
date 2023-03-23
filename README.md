@@ -1,29 +1,53 @@
 # Individual project3 from IDS721
-This is a course based project from IDS721, and the main task of this project is to use a major Big Data system to perform a Data Engineering related task.
+This is a course based project from IDS721, and the main task of this project is to use AWS lambda to perform a Data Engineering related task.
 
 ## Description
-This project is to build a data pipeline that extracts data from various sources, transforms it into a standardized format, and loads it into a data warehouse. Specifically, we will be working with data from a fictitious e-commerce website that sells products across multiple regions. The data includes sales records, customer data, and product data.
+This Rust project demonstrates how to use the K-nearest neighbors (KNN) algorithm for classifying the breast cancer dataset from Smartcore. The project is designed to run on AWS Lambda and respond with a message containing the accuracy of the KNN model.
 
-I will be using AWS Spark to perform the ETL (extract, transform, load) process. We will also be using AWS services such as S3 for storage and Glue for data catalog and ETL job orchestration.
 
-## Get started
-To get started with this project, you will need to have access to an AWS account. You will also need to have the necessary permissions to create S3 buckets, Glue jobs, and other AWS services.
+## Prerequisites
+To run this project, you will need the following:
 
-1. Clone the repository to your local machine
-2. Create an S3 bucket to store your data
-3. Set up an AWS Glue data catalog
-4. Create AWS Glue jobs to perform the ETL process
-5. Use AWS Spark to transform the data and load it into a data warehouse
-6. Automate the ETL process using AWS Glue scheduling
+1. Rust programming language (version 1.57 or newer)
+2. AWS CLI (version 2.x)
+3. AWS account with permissions to create and manage AWS Lambda functions
+4. Git for cloning the repository
+## Installation
+1. Clone the repo.
+```git clone https://github.com/nogibjj/IDS721_individual_proj3```
+2. Build the project.
+This project is writed in Arm environment. User can choose either:
+```	cargo lambda build --release --arm64```
+OR
+```	cargo lambda build --release --x86```
+3. Deploy to the AWS.
+```cargo lambda deploy```
+
+## Usage
+To invoke the Lambda function and get the KNN accuracy on the breast cancer dataset, use the following command:
+```cargo lambda invoke --remote --data-ascii '' --output-format json project3 [output.txt](optional)```
+
+Check the output.txt file for the message containing the accuracy of the KNN model. Or you can just output the response to the terminal.
+
+## Screenshots
+This is the successful result from the AWS Lambda console.
+![alt text](resource/img1.png)
+
+This is the successful log from the AWS Lambda console.
+![alt text](resource/img2.png)
 
 ## Weekly plan
-1. Week 1: Data Collection and Preparation
-Identify and collect data from various sources. Create a data schema for the data. Clean and prepare the data for the ETL process
+1. Week 1: Research and Preparation
+Research K-nearest neighbors (KNN) and its applications in breast cancer classification. Familiarize yourself with the breast cancer dataset from Smartcore. Set up Rust development environment and AWS CLI. Install necessary libraries and dependencies. Define project milestones. Create a GitHub repository for the project.
 
-2. Week 2: ETL Process and Data Warehouse
-Create AWS Glue jobs to perform the ETL process. Use AWS Spark to transform the data into a standardized format. Load the transformed data into a data warehouse. Perform data quality checks to ensure accuracy
-3. Week 3: Automation and Final Touches
-Automate the ETL process using AWS Glue scheduling. Create visualizations and reports for the data. Add any final touches and perform code cleanup
+2. Week 2: Development
+Implement the KNN algorithm using the Smartcore library. Load the breast cancer dataset and preprocess it. Train the KNN model on the dataset. Implement a Lambda function handler to wrap the KNN classifier. Package the Rust project for AWS Lambda deployment. Deploy the Lambda function to AWS and test it. Write the project's README file, including instructions for deployment and usage. Add comments and explanations to the code.
+
+3. Week 3: Testing
+Test the KNN classifier and Lambda function thoroughly. Identify and fix any bugs or performance issues. Optimize the KNN model by fine-tuning hyperparameters. Refine the Lambda function for better performance and resource usage. Review the entire project, ensuring everything is working as expected. Create a final release on GitHub. Update the README with any new information or improvements.
+
+## Contributing
+I appreciate all kinds of contributions to this project! Please feel free to open an issue to discuss your ideas or submit a pull request with your changes.
 ## References
 
 * [rust-cli-template](https://github.com/kbknapp/rust-cli-template)
